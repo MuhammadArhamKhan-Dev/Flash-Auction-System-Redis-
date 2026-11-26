@@ -71,15 +71,8 @@ Then increase `--users` (500, 1000, ...) and record the numbers for your report.
 `--servers 127.0.0.1:8080`. Nginx on Windows is limited to about 1024 connections
 (each WebSocket uses two), so stay near 200-400 users through it.
 
-## Run with Docker (friend's machine)
 
-```
-docker compose up --build
-```
-
-Open `http://localhost:8080`. Test with `--servers 127.0.0.1:8080`.
-
-## How each CEP problem is solved
+## How each problem is solved
 
 | Problem | Solution | Where | Evidence |
 |---|---|---|---|
@@ -111,7 +104,7 @@ A lagging cache only means a bid goes to PostgreSQL, which makes the final decis
 | `GET /api/health` | instance name and connection count |
 | `POST /api/naive/bid` | intentionally broken "old REST" bid, for comparison |
 
-## Limitations (state these in the report)
+## Limitations
 
 - 50,000 concurrent bidders is the architectural target. Report only the load you actually measured.
 - All bids for one auction pass through one row lock. This guarantees correctness and caps throughput per auction.
